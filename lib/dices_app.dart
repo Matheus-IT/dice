@@ -27,18 +27,14 @@ class DicesApp extends StatelessWidget {
                 flex: 50,
                 child: TextButton(
                   onPressed: _leftDicePressed,
-                  child: const Image(
-                    image: AssetImage('assets/images/dice2.png'),
-                  ),
+                  child: Image.asset('assets/images/dice2.png'),
                 ),
               ),
               Expanded(
                 flex: 50,
                 child: TextButton(
                   onPressed: _rightDicePressed,
-                  child: const Image(
-                    image: AssetImage('assets/images/dice5.png'),
-                  ),
+                  child: Image.asset('assets/images/dice5.png'),
                 ),
               ),
             ],
