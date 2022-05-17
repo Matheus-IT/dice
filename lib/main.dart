@@ -2,4 +2,4 @@ import 'package:flutter/material.dart';
 
 import 'dices_app.dart';
 
-void main() => runApp(const DicesApp());
+void main() => runApp(DicesApp());

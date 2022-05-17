@@ -1,14 +1,29 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class DicesApp extends StatelessWidget {
-  const DicesApp({Key? key}) : super(key: key);
+class DicesApp extends StatefulWidget {
+  @override
+  State<DicesApp> createState() => _DicesAppState();
+}
 
-  void _leftDicePressed() {
-    debugPrint('Left Dice Pressed');
+class _DicesAppState extends State<DicesApp> {
+  final random = Random();
+  int leftDieNumber = 1;
+  int rightDieNumber = 1;
+
+  void _leftDiePressed() {
+    if (leftDieNumber < 6) {
+      setState(() => leftDieNumber++);
+    } else {
+      leftDieNumber = 1;
+      setState(() => leftDieNumber);
+    }
   }
 
-  void _rightDicePressed() {
-    debugPrint('Right Dice Pressed');
+  void _rightDiePressed() {
+    rightDieNumber = random.nextInt(6) + 1;
+    setState(() => rightDieNumber);
   }
 
   @override
@@ -26,15 +41,15 @@ class DicesApp extends StatelessWidget {
               Expanded(
                 flex: 50,
                 child: TextButton(
-                  onPressed: _leftDicePressed,
-                  child: Image.asset('assets/images/dice2.png'),
+                  onPressed: _leftDiePressed,
+                  child: Image.asset('assets/images/dice${leftDieNumber}.png'),
                 ),
               ),
               Expanded(
                 flex: 50,
                 child: TextButton(
-                  onPressed: _rightDicePressed,
-                  child: Image.asset('assets/images/dice5.png'),
+                  onPressed: _rightDiePressed,
+                  child: Image.asset('assets/images/dice${rightDieNumber}.png'),
                 ),
               ),
             ],
