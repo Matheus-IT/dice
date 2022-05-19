@@ -44,7 +44,6 @@ class _DicesAppState extends State<DicesApp> {
           child: GestureDetector(
             onTap: _rollDice,
             child: Container(
-              color: Colors.amber,
               height: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
