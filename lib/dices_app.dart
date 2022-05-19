@@ -26,6 +26,12 @@ class _DicesAppState extends State<DicesApp> {
     setState(() => rightDieNumber);
   }
 
+  void _rollDice() {
+    _leftDiePressed();
+    _rightDiePressed();
+    debugPrint('Roll two');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,24 +41,33 @@ class _DicesAppState extends State<DicesApp> {
         ),
         backgroundColor: Colors.blue,
         body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 50,
-                child: TextButton(
-                  onPressed: _leftDiePressed,
-                  child: Image.asset('assets/images/dice${leftDieNumber}.png'),
-                ),
+          child: GestureDetector(
+            onTap: _rollDice,
+            child: Container(
+              color: Colors.amber,
+              height: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 50,
+                    child: TextButton(
+                      onPressed: _leftDiePressed,
+                      child:
+                          Image.asset('assets/images/dice${leftDieNumber}.png'),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 50,
+                    child: TextButton(
+                      onPressed: _rightDiePressed,
+                      child: Image.asset(
+                          'assets/images/dice${rightDieNumber}.png'),
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 50,
-                child: TextButton(
-                  onPressed: _rightDiePressed,
-                  child: Image.asset('assets/images/dice${rightDieNumber}.png'),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
